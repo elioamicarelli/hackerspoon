@@ -55,6 +55,10 @@ h1 {
     color: #00FFFF; /* Brighter green for clickable hashtags */
     text-decoration: none;
 }
+h1 a {
+    text-decoration: none;
+    color: inherit;
+}
 
 #article-list .meta .hashtags a:hover {
     text-decoration: underline;
