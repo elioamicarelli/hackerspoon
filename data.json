@@ -1,24 +1,6 @@
 {
   "articles": [
     {
-      "title": "My First Note",
-      "file": "notes/my-first-note.md",
-      "date": "2024-01-01",
-      "hashtags": ["first", "testing"]
-    },
-    {
-      "title": "My Second Note",
-      "file": "notes/my-second-note.md",
-      "date": "2024-01-02",
-      "hashtags": ["second", "testing"]
-    },
-    {
-      "title": "My Third Note",
-      "file": "notes/my-third-note.md",
-      "date": "2024-01-03",
-      "hashtags": ["third", "new"]
-    },
-    {
       "title": "How Diesel Knights Won Kickstarter",
       "file": "notes/diesel-knights.md",
       "date": "2025-12-01",
@@ -28,7 +10,7 @@
       "title": "The Rise of Friendslop",
       "file": "notes/friendslop-genre.md",
       "date": "2025-11-12",
-      "hashtags": ["friendslop", "indiegames"]
+      "hashtags": ["friendslop", "indieplaybook", "videogames"]
     }
   ]
 }
