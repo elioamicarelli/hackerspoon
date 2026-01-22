@@ -1,3 +1,13 @@
+/* General link styling */
+a {
+    color: #bc92f8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 body {
     font-family: 'Courier New', Courier, monospace;
     line-height: 1.6;
@@ -27,14 +37,14 @@ h1 {
 }
 
 #article-list a {
+    color: #00FF00;
     text-decoration: none;
-    color: #00FF00; /* Article title links */
-    font-size: 20px;
 }
 
 #article-list a:hover {
     text-decoration: underline;
 }
+
 
 .meta {
     margin-top: 5px;
@@ -50,11 +60,6 @@ h1 {
     color: #00FF00; /* Hashtags brackets and commas */
 }
 
-#article-list .meta .hashtags a {
-    font-size: 12px;
-    color: #00FFFF; /* Brighter green for clickable hashtags */
-    text-decoration: none;
-}
 header h1 a {
     text-decoration: none !important;
     color: #00FF00 !important;
@@ -63,8 +68,4 @@ header h1 a {
 header h1 a:hover {
     text-decoration: none !important;
     color: #00FF00 !important;
-}
-
-#article-list .meta .hashtags a:hover {
-    text-decoration: underline;
 }
