@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hackerspoon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 id="hashtag-title"></h1>
+    </header>
+    <main>
+        <ul id="article-list">
+            <!-- Articles will be dynamically loaded here -->
+        </ul>
+    </main>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const tag = urlParams.get('tag');
+
+        document.getElementById('hashtag-title').textContent = `Notes tagged #${tag}`;
+
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const articleList = document.getElementById('article-list');
+                const filteredArticles = data.articles.filter(article => article.hashtags.includes(tag));
+
+                filteredArticles.forEach(article => {
+                    const listItem = document.createElement('li');
+                    
+                    const articleLink = document.createElement('a');
+                    articleLink.href = `note.html?file=${article.file}`;
+                    articleLink.textContent = article.title;
+                    listItem.appendChild(articleLink);
+                    
+                    // Add a separator
+                    listItem.appendChild(document.createTextNode(' - '));
+                    
+                    const dateSpan = document.createElement('span');
+                    dateSpan.className = 'date';
+                    dateSpan.textContent = article.date;
+                    listItem.appendChild(dateSpan);
+
+                    articleList.appendChild(listItem);
+                });
+            });
+    </script>
+</body>
+</html>

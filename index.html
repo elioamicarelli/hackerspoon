@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hackerspoon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>hackerspoon</h1>
+    </header>
+    <main>
+        <ul id="article-list">
+            <!-- Articles will be dynamically loaded here -->
+        </ul>
+    </main>
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const articleList = document.getElementById('article-list');
+                data.articles.forEach(article => {
+                    const listItem = document.createElement('li');
+                    
+                    const articleLink = document.createElement('a');
+                    articleLink.href = `note.html?file=${article.file}`;
+                    articleLink.textContent = article.title;
+                    listItem.appendChild(articleLink);
+                    
+                    const dateAndHashtags = document.createElement('div');
+                    dateAndHashtags.className = 'meta';
+
+                    const dateSpan = document.createElement('span');
+                    dateSpan.className = 'date';
+                    dateSpan.textContent = article.date;
+                    dateAndHashtags.appendChild(dateSpan);
+
+                    const hashtagSpan = document.createElement('span');
+                    hashtagSpan.className = 'hashtags';
+                    
+                    const hashtagLinks = article.hashtags.map(tag => 
+                        `<a href="hashtag.html?tag=${tag}">${tag}</a>`
+                    ).join(', ');
+
+                    hashtagSpan.innerHTML = ` [${hashtagLinks}]`;
+                    dateAndHashtags.appendChild(hashtagSpan);
+
+                    listItem.appendChild(dateAndHashtags);
+
+                    articleList.appendChild(listItem);
+                });
+            });
+    </script>
+    </main>
+</body>
+</html>
