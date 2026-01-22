@@ -56,12 +56,13 @@ h1 {
     text-decoration: none;
 }
 header h1 a {
-    text-decoration: none;
-    color: #00FF00;
+    text-decoration: none !important;
+    color: #00FF00 !important;
 }
 
 header h1 a:hover {
-    text-decoration: none;
+    text-decoration: none !important;
+    color: #00FF00 !important;
 }
 
 #article-list .meta .hashtags a:hover {
