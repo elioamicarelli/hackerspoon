@@ -20,6 +20,10 @@
             .then(response => response.json())
             .then(data => {
                 const articleList = document.getElementById('article-list');
+
+                // Sort articles by date in descending order
+                data.articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
                 data.articles.forEach(article => {
                     const listItem = document.createElement('li');
                     
