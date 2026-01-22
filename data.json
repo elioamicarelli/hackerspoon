@@ -1,0 +1,16 @@
+{
+  "articles": [
+    {
+      "title": "My First Note",
+      "file": "notes/my-first-note.md",
+      "date": "2024-01-01",
+      "hashtags": ["first", "testing"]
+    },
+    {
+      "title": "My Second Note",
+      "file": "notes/my-second-note.md",
+      "date": "2024-01-02",
+      "hashtags": ["second", "testing"]
+    }
+  ]
+}
