@@ -1,16 +1,22 @@
 {
   "articles": [
     {
+      "title": "The Rise of Gambling Roguelikes",
+      "file": "notes/gambling-roguelikes.md",
+      "date": "2026-23-01",
+      "hashtags": ["game research", "roguelikes", "videogames"]
+    },
+    {
       "title": "How Diesel Knights Won Kickstarter",
       "file": "notes/diesel-knights.md",
       "date": "2025-12-01",
-      "hashtags": ["kickstarter", "indieplaybook", "videogames"]
+      "hashtags": ["crowdfunding", "indieplaybook", "videogames"]
     },
     {
       "title": "The Rise of Friendslop",
       "file": "notes/friendslop-genre.md",
       "date": "2025-11-12",
-      "hashtags": ["friendslop", "indieplaybook", "videogames"]
+      "hashtags": ["game research", "friendslop", "videogames"]
     }
   ]
 }
