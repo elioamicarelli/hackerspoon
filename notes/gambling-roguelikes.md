@@ -1,3 +1,5 @@
+# The Rise of Gambling Roguelikes
+
 Over the last few years, we have witnessed the rise of 'Gambling Roguelikes': indie titles that synthesize the visceral thrill of games of chance with the calculated progression of traditional roguelikes. By balancing the dopamine rush of chance games against strategic depth, developers have created a sub-genre defined by risk, reward, and high replayability. Below are the standout titles that emerged from my analysis of the genre's recent evolution.
 
 ### Slay the Spire (2019)
