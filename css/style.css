@@ -110,6 +110,15 @@ article p {
     margin-top: 0.5rem;
 }
 
+.social-backlight {
+    text-shadow: 0 0 5px rgba(188, 146, 248, 0.4), 0 0 10px rgba(188, 146, 248, 0.2); /* Purple glow effect */
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+.social-backlight:hover {
+    text-shadow: 0 0 8px rgba(188, 146, 248, 0.7), 0 0 15px rgba(188, 146, 248, 0.5), 0 0 20px rgba(188, 146, 248, 0.3); /* More intense glow on hover */
+}
+
 .nav-links {
     text-align: center;
     margin-top: 1rem;
@@ -160,6 +169,33 @@ article p {
     color: #0f0; /* Hashtags brackets and commas */
 }
 
+/* Latest Articles Section */
+.latest-articles-section {
+    text-align: center;
+    padding: 2rem;
+}
+
+.latest-articles-section h2 {
+    font-size: 1.8rem;
+    color: #0f0;
+    margin-bottom: 1rem;
+    font-weight: normal;
+}
+
+.latest-articles-section p {
+    font-size: 1.1rem;
+    color: #eee;
+}
+
+.latest-articles-section a {
+    color: #bc92f8;
+    text-decoration: none;
+}
+
+.latest-articles-section a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
     .posts-container {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -179,15 +215,16 @@ article p {
 /* Contact Section */
 .contact-section {
     max-width: 800px;
-    margin: 4rem auto;
+    margin: -4rem auto;
     padding: 2rem;
     text-align: center;
 }
 
 .contact-section h2 {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     color: #0f0;
     margin-bottom: 2rem;
+    font-weight: normal;
 }
 
 .terminal-box {
