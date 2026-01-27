@@ -173,7 +173,9 @@ article p {
 /* Latest Articles Section */
 .latest-articles-section {
     text-align: left;
-    padding: 1rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .latest-articles-section h2 {
