@@ -14,10 +14,10 @@
         "link_target": "https://vimeo.com/808603252"
     },
     {
-        "title": "Post 3 Title",
+        "title": "Teknoboxa - Neon Arenas",
         "preview_image": "images/image_3.png",
-        "description": "This is a 5-line description of the third post. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-        "link_type": "markdown",
-        "link_target": "post3.md"
+        "description": "Teknoboxa - Neon Arenas is a pocket-sized, 1-vs-1 tabletop fighting game with a cyberpunk aesthetic, featuring unique characters and abilities.",
+        "link_type": "external",
+        "link_target": "https://teknoboxa.substack.com/"
     }
 ]
