@@ -16,11 +16,5 @@
         "preview_image": "images/image_3.png",
         "description": "This is a 5-line description of the third post. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
         "markdown_file": "post3.md"
-    },
-    {
-        "title": "Mathematics of bookmaking - SPBM Part 1",
-        "preview_image": "images/image_1.png",
-        "description": "This is a 5-line description of the fourth post. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-        "markdown_file": "post4.md"
     }
 ]
