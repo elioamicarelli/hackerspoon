@@ -1,5 +1,12 @@
 [
     {
+        "title": "Teknoboxa",
+        "preview_image": "images/tkbx_preview.png",
+        "description": "Teknoboxa is a pocket-sized, 1-vs-1 tabletop fighting game with a cyberpunk aesthetic, driven by tactical, simultaneous combat.",
+        "link_type": "external",
+        "link_target": "https://teknoboxa.substack.com/"
+    },
+    {
         "title": "FighterOdds.ai",
         "preview_image": "images/fo_preview.png",
         "description": "FighterOdds.ai is an AI-powered MMA tipster dedicated to finding and recommending high-value bets from more than 20 bookmakers.",
@@ -12,12 +19,5 @@
         "description": "Deep Combat analyzes fighting game sessions using Machine Vision to extract and visualize metrics in near real-time.",
         "link_type": "external",
         "link_target": "https://vimeo.com/808603252"
-    },
-    {
-        "title": "Teknoboxa - Neon Arenas",
-        "preview_image": "images/image_3.png",
-        "description": "Teknoboxa - Neon Arenas is a pocket-sized, 1-vs-1 tabletop fighting game with a cyberpunk aesthetic, featuring unique characters and abilities.",
-        "link_type": "external",
-        "link_target": "https://teknoboxa.substack.com/"
     }
 ]
