@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hacker spoon</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-yaml/dist/js-yaml.min.js"></script>
 </head>
@@ -52,7 +52,7 @@
 
             // Content Loading Functions
             function loadHome() {
-                fetch('./posts.json')
+                fetch('posts.json')
                     .then(response => response.json())
                     .then(posts => {
                         const postsContainer = document.createElement('div');
@@ -62,7 +62,7 @@
                             postPreview.classList.add('post-preview');
 
                             const image = document.createElement('img');
-                            image.src = './' + post.preview_image;
+                            image.src = post.preview_image;
                             image.alt = post.title;
 
                             const title = document.createElement('h2');
@@ -88,7 +88,7 @@
             }
 
             function loadPost(postFile) {
-                fetch(`./md_posts/${postFile}`)
+                fetch(`md_posts/${postFile}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error(`HTTP error! status: ${response.status}`);
@@ -107,7 +107,7 @@
                             title.textContent = frontMatter.title;
 
                             const image = document.createElement('img');
-                            image.src = './' + frontMatter.image;
+                            image.src = frontMatter.image;
                             image.alt = frontMatter.title;
 
                             const content = document.createElement('div');
@@ -131,7 +131,7 @@
             }
 
             function loadNotes() {
-                fetch('./notebook/data.json')
+                fetch('notebook/data.json')
                     .then(response => response.json())
                     .then(data => {
                         const articleList = document.createElement('ul');
@@ -173,7 +173,7 @@
             }
             
             function loadNote(noteFile) {
-                fetch(`./notebook/${noteFile}`)
+                fetch(`notebook/${noteFile}`)
                     .then(response => response.text())
                     .then(text => {
                         const content = document.createElement('div');
@@ -192,7 +192,7 @@
             }
 
             // Random text script
-            fetch('./random_texts.txt')
+            fetch('random_texts.txt')
                 .then(response => response.text())
                 .then(text => {
                     const texts = text.split('\n').filter(line => line.trim() !== '');
