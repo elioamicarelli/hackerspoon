@@ -17,6 +17,12 @@
       "file": "notes/friendslop-genre.md",
       "date": "2025-11-12",
       "hashtags": ["game research", "friendslop", "videogames"]
+    },
+    {
+      "title": "LLMs Social Simulation",
+      "file": "notes/llms-social-simulation.md",
+      "date": "2026-01-16",
+      "hashtags": ["ai", "social simulation"]
     }
   ]
 }
