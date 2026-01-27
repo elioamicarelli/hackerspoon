@@ -19,6 +19,40 @@
     <main id="main-content">
         <!-- Content will be dynamically loaded here -->
     </main>
+
+    <section class="contact-section">
+        <h2>Get in Touch</h2>
+        <div class="terminal-box">
+            <div class="terminal-header">
+                <span class="terminal-button close"></span>
+                <span class="terminal-button minimize"></span>
+                <span class="terminal-button maximize"></span>
+                <span class="terminal-title">hacker@spoon: ~</span>
+            </div>
+            <div class="terminal-body">
+                <form id="contact-form" action="https://formspree.io/f/mjgwjgqq" method="POST">
+                    <div class="terminal-line">
+                        <label for="name">visitor@hacker-spoon:~$</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="terminal-line">
+                        <label for="email">visitor@hacker-spoon:~$</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="terminal-line textarea-line">
+                        <label for="message">visitor@hacker-spoon:~$</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <div class="terminal-line">
+                        <label for="submit-button">visitor@hacker-spoon:~$</label>
+                        <button type="submit" id="submit-button">send_message.sh</button>
+                    </div>
+                    <p id="form-status"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <div class="random-text-container">
         <p id="random-text"></p>
     </div>
@@ -204,6 +238,42 @@
                     }
                 })
                 .catch(error => console.error('Error fetching random texts:', error));
+            
+            // Formspree submission handler
+            const form = document.getElementById('contact-form');
+            const formStatus = document.getElementById('form-status');
+
+            async function handleSubmit(event) {
+                event.preventDefault();
+                const data = new FormData(event.target);
+                try {
+                    const response = await fetch(event.target.action, {
+                        method: form.method,
+                        body: data,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    if (response.ok) {
+                        formStatus.style.color = "#27c93f"; // Success color
+                        formStatus.innerHTML = "visitor@hacker-spoon:~$ Thanks for your submission!";
+                        form.reset();
+                    } else {
+                        response.json().then(data => {
+                            formStatus.style.color = "#ff5f56"; // Error color
+                            if (Object.hasOwn(data, 'errors')) {
+                                formStatus.innerHTML = `visitor@hacker-spoon:~$ ` + data["errors"].map(error => error["message"]).join(", ");
+                            } else {
+                                formStatus.innerHTML = "visitor@hacker-spoon:~$ Oops! There was a problem submitting your form";
+                            }
+                        });
+                    }
+                } catch (error) {
+                    formStatus.style.color = "#ff5f56"; // Error color
+                    formStatus.innerHTML = "visitor@hacker-spoon:~$ Oops! There was a problem submitting your form";
+                }
+            }
+            form.addEventListener("submit", handleSubmit);
 
             // Initial load and hash change listener
             router();

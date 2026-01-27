@@ -27,9 +27,11 @@ header h1 a {
 
 .posts-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .post-preview {
@@ -37,6 +39,12 @@ header h1 a {
     border-radius: 5px;
     padding: 1rem;
     background-color: black; /* Black background for post previews */
+    box-shadow: 0 0 15px rgba(188, 146, 248, 0.4);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.post-preview:hover {
+    box-shadow: 0 0 25px rgba(188, 146, 248, 0.7);
 }
 
 .post-preview img {
@@ -153,11 +161,169 @@ article p {
 
 @media (max-width: 768px) {
     .posts-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 
-    article img {
-        max-width: 100%;
-        height: auto;
+    .post-preview h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .posts-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Contact Section */
+.contact-section {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    color: #0f0;
+    margin-bottom: 2rem;
+}
+
+.terminal-box {
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 100%;
+    text-align: left;
+}
+
+.terminal-header {
+    background-color: #333;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #0f0;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    border: 1px solid #444;
+}
+
+.terminal-button.close { background-color: #ff5f56; }
+.terminal-button.minimize { background-color: #ffbd2e; }
+.terminal-button.maximize { background-color: #27c93f; }
+
+.terminal-title {
+    color: #eee;
+    margin-left: 8px;
+    font-size: 0.9rem;
+}
+
+.terminal-body {
+    padding: 20px 15px;
+    color: #0f0;
+}
+
+.contact-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.terminal-line label {
+    margin-right: 10px;
+    flex-shrink: 0; /* Prevent label from shrinking */
+    white-space: nowrap; /* Keep label on one line */
+    color: #0f0;
+}
+
+.terminal-box input[type="text"],
+.terminal-box input[type="email"],
+.terminal-box textarea {
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px dashed #0f0;
+    color: #eee;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    padding: 5px 0;
+    outline: none;
+    width: 100%; /* Ensure inputs take full width on wrap */
+}
+
+.terminal-box textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.terminal-box input:focus,
+.terminal-box textarea:focus {
+    border-bottom-color: #bc92f8; /* Highlight on focus */
+}
+
+.terminal-box ::placeholder {
+    color: #888;
+    opacity: 1; /* Firefox default opacity */
+}
+
+.terminal-box button {
+    background-color: #0f0;
+    color: black;
+    border: 1px solid #0f0;
+    padding: 10px 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    margin-top: 10px;
+    align-self: flex-start; /* Align button with prompt */
+}
+
+.terminal-box button:hover {
+    background-color: black;
+    color: #0f0;
+    border-color: #bc92f8;
+}
+
+#form-status {
+    margin-top: 15px;
+    color: #ff5f56; /* Error color */
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments for terminal */
+@media (max-width: 600px) {
+    .contact-section {
+        padding: 1rem;
+    }
+
+    .contact-section h2 {
+        font-size: 2rem;
+    }
+
+    .terminal-body {
+        padding: 15px 10px;
+    }
+
+    .terminal-line {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .terminal-line label {
+        margin-bottom: 5px;
     }
 }
