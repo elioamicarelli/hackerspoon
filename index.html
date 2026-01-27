@@ -4,219 +4,211 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hacker spoon</title>
-        <link rel="stylesheet" id="stylesheet" href="">
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/js-yaml/dist/js-yaml.min.js"></script>
-    </head>
-    <body>
-        <header>
-            <a href="#" style="text-decoration: none; color: inherit;"><h1>hacker spoon</h1></a>
-            <div class="social-links">
-                <a href="https://patreon.com/yourprofile" target="_blank">P</a> |
-                <a href="https://linkedin.com/yourprofile" target="_blank">in</a>
-            </div>
-        </header>
-        <main id="main-content">
-            <!-- Content will be dynamically loaded here -->
-        </main>
-        <div class="random-text-container">
-            <p id="random-text"></p>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml/dist/js-yaml.min.js"></script>
+</head>
+<body>
+    <header>
+        <a href="#" style="text-decoration: none; color: inherit;"><h1>hacker spoon</h1></a>
+        <div class="social-links">
+            <a href="https://patreon.com/yourprofile" target="_blank">P</a> |
+            <a href="https://linkedin.com/yourprofile" target="_blank">in</a>
         </div>
-    
-        <script>
-            const isGithubPages = window.location.hostname.endsWith('github.io');
-            let basePath = '';
-                    if (isGithubPages) {
-                        const pathParts = window.location.pathname.split('/').filter(part => part.length > 0);
-                        if (pathParts.length >= 1) { // Check if there's at least a repo name
-                            basePath = `/${pathParts[0]}/`;
-                        }
-                    }            document.getElementById('stylesheet').href = `${basePath}css/style.css`;
-    
-            document.addEventListener("DOMContentLoaded", function() {
-                const mainContent = document.getElementById('main-content');
-    
-                // Router
-                function router() {
-                    const hash = window.location.hash || '#home';
-                    const [path, queryString] = hash.substring(1).split('?');
-                    const urlParams = new URLSearchParams(queryString);
-    
-                    mainContent.innerHTML = ''; // Clear content area
-    
-                    if (path === 'home') {
-                        loadHome();
-                    } else if (path === 'post') {
-                        loadPost(urlParams.get('post'));
-                    } else if (path === 'notes') {
-                        loadNotes();
-                    } else if (path === 'note') {
-                        loadNote(urlParams.get('file'));
-                    } else if (path === 'hashtag') {
-                        loadHashtag(urlParams.get('tag'));
-                    } else {
-                        loadHome();
-                    }
+    </header>
+    <main id="main-content">
+        <!-- Content will be dynamically loaded here -->
+    </main>
+    <div class="random-text-container">
+        <p id="random-text"></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const mainContent = document.getElementById('main-content');
+
+            // Router
+            function router() {
+                const hash = window.location.hash || '#home';
+                const [path, queryString] = hash.substring(1).split('?');
+                const urlParams = new URLSearchParams(queryString);
+
+                mainContent.innerHTML = ''; // Clear content area
+
+                if (path === 'home') {
+                    loadHome();
+                } else if (path === 'post') {
+                    loadPost(urlParams.get('post'));
+                } else if (path === 'notes') {
+                    loadNotes();
+                } else if (path === 'note') {
+                    loadNote(urlParams.get('file'));
+                } else if (path === 'hashtag') {
+                    loadHashtag(urlParams.get('tag'));
+                } else {
+                    loadHome();
                 }
-    
-                // Content Loading Functions
-                function loadHome() {
-                    fetch(`${basePath}posts.json`)
-                        .then(response => response.json())
-                        .then(posts => {
-                            const postsContainer = document.createElement('div');
-                            postsContainer.classList.add('posts-container');
-                            posts.forEach(post => {
-                                const postPreview = document.createElement('div');
-                                postPreview.classList.add('post-preview');
-    
-                                const image = document.createElement('img');
-                                image.src = `${basePath}${post.preview_image}`;
-                                image.alt = post.title;
-    
-                                const title = document.createElement('h2');
-                                title.textContent = post.title;
-    
-                                const description = document.createElement('p');
-                                description.textContent = post.description;
-    
-                                const readMore = document.createElement('a');
-                                readMore.href = `#post?post=${post.markdown_file}`;
-                                readMore.textContent = 'Read More';
-    
-                                postPreview.appendChild(image);
-                                postPreview.appendChild(title);
-                                postPreview.appendChild(description);
-                                postPreview.appendChild(readMore);
-    
-                                postsContainer.appendChild(postPreview);
-                            });
-                            mainContent.appendChild(postsContainer);
-                        })
-                        .catch(error => console.error('Error fetching posts:', error));
-                }
-    
-                function loadPost(postFile) {
-                    fetch(`${basePath}md_posts/${postFile}`)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error(`HTTP error! status: ${response.status}`);
-                            }
-                            return response.text();
-                        })
-                        .then(text => {
-                            try {
-                                const parts = text.split('---');
-                                const frontMatter = jsyaml.load(parts[1]);
-                                const markdownContent = parts.slice(2).join('---').trim();
-    
-                                const article = document.createElement('article');
-    
-                                const title = document.createElement('h2');
-                                title.textContent = frontMatter.title;
-    
-                                const image = document.createElement('img');
-                                image.src = `${basePath}${frontMatter.image}`;
-                                image.alt = frontMatter.title;
-    
-                                const content = document.createElement('div');
-                                content.innerHTML = marked.parse(markdownContent);
-                                
-                                article.appendChild(title);
-                                article.appendChild(image);
-                                article.appendChild(content);
-    
-                                mainContent.appendChild(article);
-                                document.title = frontMatter.title + " | hacker spoon";
-                            } catch (error) {
-                                console.error('Error processing post content:', error);
-                                mainContent.innerHTML = `<p>There was an error loading this post: ${error.message}. Please check the console for details.</p>`;
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error fetching post:', error);
-                            mainContent.innerHTML = `<p>There was an error loading this post: ${error.message}. Please check the console for details.</p>`;
+            }
+
+            // Content Loading Functions
+            function loadHome() {
+                fetch('posts.json')
+                    .then(response => response.json())
+                    .then(posts => {
+                        const postsContainer = document.createElement('div');
+                        postsContainer.classList.add('posts-container');
+                        posts.forEach(post => {
+                            const postPreview = document.createElement('div');
+                            postPreview.classList.add('post-preview');
+
+                            const image = document.createElement('img');
+                            image.src = post.preview_image;
+                            image.alt = post.title;
+
+                            const title = document.createElement('h2');
+                            title.textContent = post.title;
+
+                            const description = document.createElement('p');
+                            description.textContent = post.description;
+
+                            const readMore = document.createElement('a');
+                            readMore.href = `#post?post=${post.markdown_file}`;
+                            readMore.textContent = 'Read More';
+
+                            postPreview.appendChild(image);
+                            postPreview.appendChild(title);
+                            postPreview.appendChild(description);
+                            postPreview.appendChild(readMore);
+
+                            postsContainer.appendChild(postPreview);
                         });
-                }
-    
-                function loadNotes() {
-                    fetch(`${basePath}notebook/data.json`)
-                        .then(response => response.json())
-                        .then(data => {
-                            const articleList = document.createElement('ul');
-                            articleList.id = 'article-list';
-                            data.articles.sort((a, b) => new Date(b.date) - new Date(a.date));
-                            data.articles.forEach(article => {
-                                const listItem = document.createElement('li');
-                                
-                                const articleLink = document.createElement('a');
-                                articleLink.href = `#note?file=${article.file}`;
-                                articleLink.textContent = article.title;
-                                listItem.appendChild(articleLink);
-                                
-                                const dateAndHashtags = document.createElement('div');
-                                dateAndHashtags.className = 'meta';
-    
-                                const dateSpan = document.createElement('span');
-                                dateSpan.className = 'date';
-                                dateSpan.textContent = article.date;
-                                dateAndHashtags.appendChild(dateSpan);
-    
-                                const hashtagSpan = document.createElement('span');
-                                hashtagSpan.className = 'hashtags';
-                                
-                                const hashtagLinks = article.hashtags.map(tag => 
-                                    `<a href="#hashtag?tag=${tag}">${tag}</a>`
-                                ).join(', ');
-    
-                                hashtagSpan.innerHTML = ` [${hashtagLinks}]`;
-                                dateAndHashtags.appendChild(hashtagSpan);
-    
-                                listItem.appendChild(dateAndHashtags);
-    
-                                articleList.appendChild(listItem);
-                            });
-                            mainContent.appendChild(articleList);
-                        })
-                        .catch(error => console.error('Error fetching notes:', error));
-                }
-                
-                function loadNote(noteFile) {
-                    fetch(`${basePath}notebook/${noteFile}`)
-                        .then(response => response.text())
-                        .then(text => {
-                            const content = document.createElement('div');
-                            content.innerHTML = marked.parse(text);
-                            mainContent.appendChild(content);
-                        })
-                        .catch(error => console.error('Error fetching note:', error));
-                }
-    
-                function loadHashtag(tag) {
-                    // This is a more complex function that would require filtering the notes.
-                    // For now, I will just display a message.
-                    const message = document.createElement('h2');
-                    message.textContent = `Notes tagged with: ${tag}`;
-                    mainContent.appendChild(message);
-                }
-    
-                // Random text script
-                fetch(`${basePath}random_texts.txt`)
-                    .then(response => response.text())
+                        mainContent.appendChild(postsContainer);
+                    })
+                    .catch(error => console.error('Error fetching posts:', error));
+            }
+
+            function loadPost(postFile) {
+                fetch(`md_posts/${postFile}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.text();
+                    })
                     .then(text => {
-                        const texts = text.split('\n').filter(line => line.trim() !== '');
-                        const randomIndex = Math.floor(Math.random() * texts.length);
-                        const randomText = texts[randomIndex];
-                        const randomTextElement = document.getElementById("random-text");
-                        if (randomTextElement) {
-                            randomTextElement.textContent = randomText;
+                        try {
+                            const parts = text.split('---');
+                            const frontMatter = jsyaml.load(parts[1]);
+                            const markdownContent = parts.slice(2).join('---').trim();
+
+                            const article = document.createElement('article');
+
+                            const title = document.createElement('h2');
+                            title.textContent = frontMatter.title;
+
+                            const image = document.createElement('img');
+                            image.src = frontMatter.image;
+                            image.alt = frontMatter.title;
+
+                            const content = document.createElement('div');
+                            content.innerHTML = marked.parse(markdownContent);
+                            
+                            article.appendChild(title);
+                            article.appendChild(image);
+                            article.appendChild(content);
+
+                            mainContent.appendChild(article);
+                            document.title = frontMatter.title + " | hacker spoon";
+                        } catch (error) {
+                            console.error('Error processing post content:', error);
+                            mainContent.innerHTML = `<p>There was an error loading this post: ${error.message}. Please check the console for details.</p>`;
                         }
                     })
-                    .catch(error => console.error('Error fetching random texts:', error));
-    
-                // Initial load and hash change listener
-                router();
-                window.addEventListener('hashchange', router);
-            });
-        </script></body>
+                    .catch(error => {
+                        console.error('Error fetching post:', error);
+                        mainContent.innerHTML = `<p>There was an error loading this post: ${error.message}. Please check the console for details.</p>`;
+                    });
+            }
+
+            function loadNotes() {
+                fetch('notebook/data.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const articleList = document.createElement('ul');
+                        articleList.id = 'article-list';
+                        data.articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        data.articles.forEach(article => {
+                            const listItem = document.createElement('li');
+                            
+                            const articleLink = document.createElement('a');
+                            articleLink.href = `#note?file=${article.file}`;
+                            articleLink.textContent = article.title;
+                            listItem.appendChild(articleLink);
+                            
+                            const dateAndHashtags = document.createElement('div');
+                            dateAndHashtags.className = 'meta';
+
+                            const dateSpan = document.createElement('span');
+                            dateSpan.className = 'date';
+                            dateSpan.textContent = article.date;
+                            dateAndHashtags.appendChild(dateSpan);
+
+                            const hashtagSpan = document.createElement('span');
+                            hashtagSpan.className = 'hashtags';
+                            
+                            const hashtagLinks = article.hashtags.map(tag => 
+                                `<a href="#hashtag?tag=${tag}">${tag}</a>`
+                            ).join(', ');
+
+                            hashtagSpan.innerHTML = ` [${hashtagLinks}]`;
+                            dateAndHashtags.appendChild(hashtagSpan);
+
+                            listItem.appendChild(dateAndHashtags);
+
+                            articleList.appendChild(listItem);
+                        });
+                        mainContent.appendChild(articleList);
+                    })
+                    .catch(error => console.error('Error fetching notes:', error));
+            }
+            
+            function loadNote(noteFile) {
+                fetch(`notebook/${noteFile}`)
+                    .then(response => response.text())
+                    .then(text => {
+                        const content = document.createElement('div');
+                        content.innerHTML = marked.parse(text);
+                        mainContent.appendChild(content);
+                    })
+                    .catch(error => console.error('Error fetching note:', error));
+            }
+
+            function loadHashtag(tag) {
+                // This is a more complex function that would require filtering the notes.
+                // For now, I will just display a message.
+                const message = document.createElement('h2');
+                message.textContent = `Notes tagged with: ${tag}`;
+                mainContent.appendChild(message);
+            }
+
+            // Random text script
+            fetch('random_texts.txt')
+                .then(response => response.text())
+                .then(text => {
+                    const texts = text.split('\n').filter(line => line.trim() !== '');
+                    const randomIndex = Math.floor(Math.random() * texts.length);
+                    const randomText = texts[randomIndex];
+                    const randomTextElement = document.getElementById("random-text");
+                    if (randomTextElement) {
+                        randomTextElement.textContent = randomText;
+                    }
+                })
+                .catch(error => console.error('Error fetching random texts:', error));
+
+            // Initial load and hash change listener
+            router();
+            window.addEventListener('hashchange', router);
+        });
+    </script>
+</body>
 </html>
