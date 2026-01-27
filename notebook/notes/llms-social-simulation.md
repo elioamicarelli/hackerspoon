@@ -4,9 +4,7 @@ Since the publication of the seminal "Generative Agents" paper (Park et al., 202
 
 Below is a summary of the core findings from both sides of this debate.
 
----
-
-### [+] Advancements: The Case for "Silicon Sampling"
+## [+] Advancements: The Case for "Silicon Sampling"
 
 Research in this category argues that LLMs have crossed a threshold where they can serve as valid proxies for human subjects in specific contexts ("Homo Silicus").
 
@@ -25,9 +23,7 @@ Research in this category argues that LLMs have crossed a threshold where they c
 5. **Improvability via Fine-Tuning:**
    Moving beyond zero-shot prompting, fine-tuning models on actual social science datasets significantly boosts their ability to predict human behavior, suggesting that "superficial" simulation can be deepened with better data (Kolluri et al., 2025).
 
----
-
-### [-] Challenges: The Boundaries of Emulation
+## [-] Challenges: The Boundaries of Emulation
 
 Critics argue that while LLMs can mimic the outputs of human behavior, they fundamentally lack the internal cognitive processes of humans, leading to fragile simulations that break down under stress or scrutiny.
 
@@ -43,14 +39,10 @@ Critics argue that while LLMs can mimic the outputs of human behavior, they fund
 4. **Cultural & Contextual Blind Spots:**
    Models trained primarily on Western data struggle to simulate the "public opinion" of non-Western or specific cultural contexts (e.g., German political nuance) without significant bias, limiting the global applicability of social simulation (ACL 2025 Case Study).
 
----
-
-### Conclusion
+## Conclusion
 The consensus emerging in 2026 is that LLMs are powerful tools for generating synthetic data and prototyping social dynamics, but they remain imperfect surrogates for human cognition. The field is moving toward a hybrid model: using LLMs to augment, not replace, human participants, while developing rigorous "algorithmic fidelity" rubrics to catch stereotypes and persona drift.
 
----
-
-### References
+## References
 
 * **Aher, G. V., Arriaga, R. I., & Kalai, A. T. (2023).** Using large language models to simulate multiple humans and replicate human subject studies. *Proceedings of the 40th International Conference on Machine Learning (ICML)*. [https://arxiv.org/abs/2208.10264](https://arxiv.org/abs/2208.10264)
 * **Argyle, L. P., Busby, E. C., Fulda, N., Gubler, J. R., Rytting, C., & Williams, D. J. (2023).** Out of one, many: Using language models to simulate human samples. *Political Analysis*, 31(3), 337–351. [https://arxiv.org/abs/2209.06899](https://arxiv.org/abs/2209.06899)
