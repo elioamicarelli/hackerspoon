@@ -9,7 +9,7 @@ body {
 header {
     text-align: center;
     padding: 2rem 0;
-    margin-bottom: 40px;
+    margin-bottom: -30px;
 }
 
 header h1 {
@@ -97,7 +97,7 @@ article p {
 
 .social-links {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .nav-links {
