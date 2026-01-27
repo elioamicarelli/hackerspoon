@@ -58,6 +58,7 @@ header h1 a {
     font-size: 1.7rem; /* Increased font size for post titles */
     color: #0f0; /* Shell-like green */
     font-weight: normal;
+    text-align: left; /* Explicitly align post titles to the left */
 }
 
 .post-preview p {
@@ -171,15 +172,16 @@ article p {
 
 /* Latest Articles Section */
 .latest-articles-section {
-    text-align: center;
-    padding: 2rem;
+    text-align: left;
+    padding: 1rem;
 }
 
 .latest-articles-section h2 {
     font-size: 1.8rem;
     color: #0f0;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     font-weight: normal;
+    text-align: center;
 }
 
 .latest-articles-section p {
