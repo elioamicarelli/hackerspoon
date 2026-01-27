@@ -114,8 +114,14 @@
                             description.textContent = post.description;
 
                             const readMore = document.createElement('a');
-                            readMore.href = `#post?post=${post.markdown_file}`;
-                            readMore.textContent = 'Read More';
+                            readMore.textContent = 'Learn More';
+                            if (post.link_type === 'markdown') {
+                                readMore.href = `#post?post=${post.link_target}`;
+                            } else if (post.link_type === 'external') {
+                                readMore.href = post.link_target;
+                                readMore.target = "_blank"; // Open external links in a new tab
+                            }
+                            console.log('Generated readMore href:', readMore.href);
 
                             postPreview.appendChild(image);
                             postPreview.appendChild(title);

@@ -1,20 +1,23 @@
 [
     {
-        "title": "Post 1 Title",
-        "preview_image": "images/image_1.png",
-        "description": "This is a 5-line description of the first post. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-        "markdown_file": "post1.md"
+        "title": "FighterOdds.ai",
+        "preview_image": "images/fo_preview.png",
+        "description": "FighterOdds.ai is an AI-powered MMA tipster dedicated to finding and recommending high-value bets from more than 20 bookmakers.",
+        "link_type": "external",
+        "link_target": "https://fighterodds.ai/"
     },
     {
-        "title": "Post 2 Title",
-        "preview_image": "images/image_2.png",
-        "description": "This is a 5-line description of the second post. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-        "markdown_file": "post2.md"
+        "title": "Deep Combat (PoC)",
+        "preview_image": "images/deepcombat_preview.png",
+        "description": "Deep Combat analyzes fighting game sessions using Machine Vision to extract and visualize metrics in near real-time.",
+        "link_type": "external",
+        "link_target": "https://vimeo.com/808603252"
     },
     {
         "title": "Post 3 Title",
         "preview_image": "images/image_3.png",
         "description": "This is a 5-line description of the third post. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-        "markdown_file": "post3.md"
+        "link_type": "markdown",
+        "link_target": "post3.md"
     }
 ]

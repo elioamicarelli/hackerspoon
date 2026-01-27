@@ -1,6 +1,6 @@
 ---
-title: "Post 1 Title"
+title: "FighterOdds.ai"
 image: "images/image_1_content.png"
 ---
 
-This is the full content of post 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+FighterOdds.ai is a tipster based on an Artificial Intelligence engine that calculates the winning probabilities of UFC fights, compares them with bookmakers' odds, and finds Value Bets to invest and earn money betting.
