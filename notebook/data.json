@@ -23,6 +23,12 @@
       "file": "notes/llms-social-simulation.md",
       "date": "2026-01-16",
       "hashtags": ["ai", "social simulation"]
+    },
+    {
+      "title": "From Research to Market: Commercial Applications of LLMs for Social Simulation",
+      "file": "notes/llm-social-simulation-applications.md",
+      "date": "2026-01-29",
+      "hashtags": ["ai", "social simulation"]
     }
   ]
 }
