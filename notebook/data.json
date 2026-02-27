@@ -1,0 +1,34 @@
+{
+  "articles": [
+    {
+      "title": "The Rise of Gambling Roguelikes",
+      "file": "notes/gambling-roguelikes.md",
+      "date": "2026-01-23",
+      "hashtags": ["game research", "roguelikes", "videogames"]
+    },
+    {
+      "title": "How Diesel Knights Won Kickstarter",
+      "file": "notes/diesel-knights.md",
+      "date": "2025-12-01",
+      "hashtags": ["crowdfunding", "indieplaybook", "videogames"]
+    },
+    {
+      "title": "The Rise of Friendslop",
+      "file": "notes/friendslop-genre.md",
+      "date": "2025-11-12",
+      "hashtags": ["game research", "friendslop", "videogames"]
+    },
+    {
+      "title": "LLMs for Social Simulation: Advancements and Challenges",
+      "file": "notes/llms-social-simulation.md",
+      "date": "2026-01-16",
+      "hashtags": ["ai", "social simulation"]
+    },
+    {
+      "title": "From Research to Market: Commercial Applications of LLMs for Social Simulation",
+      "file": "notes/llm-social-simulation-applications.md",
+      "date": "2026-01-29",
+      "hashtags": ["ai", "social simulation"]
+    }
+  ]
+}

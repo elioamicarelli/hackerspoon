@@ -1,0 +1,101 @@
+body {
+    background-color: black;
+    color: #0f0; /* Shell-like green */
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: -30px;
+    margin-bottom: -30px;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    color: #0f0; /* Shell-like green */
+    font-weight: normal;
+}
+
+header h1 a {
+    text-decoration: none !important;
+    color: #0f0 !important;
+}
+
+a {
+    text-decoration: none; /* Ensure all links have no underline */
+    color: #bc92f8; /* Default link color */
+}
+
+/* Styling for post pages */
+article h2 {
+    text-align: center;
+    font-size: 2rem; /* Increased font size for post page title */
+    font-weight: normal
+}
+
+article img {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #0f0; /* Shell-like green */
+}
+
+article p {
+    font-size: 1.2rem; /* Increased font size for post text */
+    color: white; /* White text for post content */
+}
+
+.nav-links {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.random-text-container {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+#random-text {
+    font-size: 1rem;
+    color: #0f0; /* Green color for the random text */
+}
+
+/* Styles for notebook */
+#article-list {
+    list-style: none;
+    padding: 0 40px;
+}
+
+#article-list li {
+    margin-bottom: 20px;
+}
+
+#article-list a {
+    color: #0f0;
+    text-decoration: none;
+}
+
+#article-list a:hover {
+    text-decoration: underline;
+}
+
+.meta {
+    margin-top: 5px;
+}
+
+.date {
+    font-size: 14px;
+    color: #0f0; /* Date color */
+}
+
+.hashtags {
+    font-size: 12px;
+    color: #0f0; /* Hashtags brackets and commas */
+}
+
+/* Contact Section */

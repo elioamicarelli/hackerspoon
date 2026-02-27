@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hacker spoon</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml/dist/js-yaml.min.js"></script>
+</head>
+<body>
+    <header>
+        <a href="#notes" style="text-decoration: none; color: inherit;"><h1>hacker spoon</h1></a>
+        <div class="random-text-container">
+            <p id="random-text"></p>
+        </div>
+    </header>
+    <main id="main-content">
+        <!-- Content will be dynamically loaded here -->
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const mainContent = document.getElementById('main-content');
+
+            // Router
+            function router() {
+                const hash = window.location.hash || '#notes';
+                const [path, queryString] = hash.substring(1).split('?');
+                const urlParams = new URLSearchParams(queryString);
+
+                mainContent.innerHTML = ''; // Clear content area
+
+                if (path === 'notes') {
+                    loadNotes();
+                } else if (path === 'note') {
+                    loadNote(urlParams.get('file'));
+                } else if (path === 'hashtag') {
+                    loadHashtag(urlParams.get('tag'));
+                } else {
+                    loadNotes();
+                }
+            }
+
+            // Content Loading Functions
+            function loadNotes() {
+                fetch('notebook/data.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const articleList = document.createElement('ul');
+                        articleList.id = 'article-list';
+                        data.articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        data.articles.forEach(article => {
+                            const listItem = document.createElement('li');
+                            
+                            const articleLink = document.createElement('a');
+                            articleLink.href = `#note?file=${article.file}`;
+                            articleLink.textContent = article.title;
+                            listItem.appendChild(articleLink);
+                            
+                            const dateAndHashtags = document.createElement('div');
+                            dateAndHashtags.className = 'meta';
+
+                            const dateSpan = document.createElement('span');
+                            dateSpan.className = 'date';
+                            dateSpan.textContent = article.date;
+                            dateAndHashtags.appendChild(dateSpan);
+
+                            const hashtagSpan = document.createElement('span');
+                            hashtagSpan.className = 'hashtags';
+                            
+                            const hashtagLinks = article.hashtags.map(tag => 
+                                `<a href="#hashtag?tag=${tag}">${tag}</a>`
+                            ).join(', ');
+
+                            hashtagSpan.innerHTML = ` [${hashtagLinks}]`;
+                            dateAndHashtags.appendChild(hashtagSpan);
+
+                            listItem.appendChild(dateAndHashtags);
+
+                            articleList.appendChild(listItem);
+                        });
+                        mainContent.appendChild(articleList);
+                    })
+                    .catch(error => console.error('Error fetching notes:', error));
+            }
+            
+            function loadNote(noteFile) {
+                fetch(`notebook/${noteFile}`)
+                    .then(response => response.text())
+                    .then(text => {
+                        const content = document.createElement('div');
+                        content.innerHTML = marked.parse(text);
+                        mainContent.appendChild(content);
+                        window.scrollTo(0, 0); // Scroll to the top of the page
+                    })
+                    .catch(error => console.error('Error fetching note:', error));
+            }
+
+            function loadHashtag(tag) {
+                fetch('notebook/data.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const filteredArticles = data.articles.filter(article => article.hashtags.includes(tag));
+                        
+                        const title = document.createElement('h2');
+                        title.textContent = `Notes tagged with: ${tag}`;
+                        title.style.textAlign = 'center';
+                        mainContent.appendChild(title);
+
+                        const articleList = document.createElement('ul');
+                        articleList.id = 'article-list';
+                        filteredArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        filteredArticles.forEach(article => {
+                            const listItem = document.createElement('li');
+                            
+                            const articleLink = document.createElement('a');
+                            articleLink.href = `#note?file=${article.file}`;
+                            articleLink.textContent = article.title;
+                            listItem.appendChild(articleLink);
+                            
+                            const dateAndHashtags = document.createElement('div');
+                            dateAndHashtags.className = 'meta';
+
+                            const dateSpan = document.createElement('span');
+                            dateSpan.className = 'date';
+                            dateSpan.textContent = article.date;
+                            dateAndHashtags.appendChild(dateSpan);
+
+                            const hashtagSpan = document.createElement('span');
+                            hashtagSpan.className = 'hashtags';
+                            
+                            const hashtagLinks = article.hashtags.map(t => 
+                                `<a href="#hashtag?tag=${t}">${t}</a>`
+                            ).join(', ');
+
+                            hashtagSpan.innerHTML = ` [${hashtagLinks}]`;
+                            dateAndHashtags.appendChild(hashtagSpan);
+
+                            listItem.appendChild(dateAndHashtags);
+
+                            articleList.appendChild(listItem);
+                        });
+                        mainContent.appendChild(articleList);
+                    })
+                    .catch(error => console.error('Error fetching notes for hashtag:', error));
+            }
+
+            // Random text script
+            fetch('random_texts.txt')
+                .then(response => response.text())
+                .then(text => {
+                    const texts = text.split('\n').filter(line => line.trim() !== '');
+                    const randomIndex = Math.floor(Math.random() * texts.length);
+                    const randomText = texts[randomIndex];
+                    const randomTextElement = document.getElementById("random-text");
+                    if (randomTextElement) {
+                        randomTextElement.textContent = randomText;
+                    }
+                })
+                .catch(error => console.error('Error fetching random texts:', error));
+            
+            // Initial load and hash change listener
+            router();
+            window.addEventListener('hashchange', router);
+        });
+    </script>
+</body>
+</html>
