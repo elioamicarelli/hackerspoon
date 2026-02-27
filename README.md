@@ -1,4 +1,4 @@
-# Hacker Spoon
+# [Hacker Spoon](https://third-mystic.github.io/hackerspoon/)
 
 A simple, minimalist blog created with vanilla JavaScript and hosted on GitHub Pages. This project uses a single-page application (SPA) architecture, dynamically loading and rendering post content from Markdown files.
 
