@@ -43,25 +43,3 @@ A simple, minimalist blog created with vanilla JavaScript and hosted on GitHub P
         "markdown_file": "post5.md"
     }
     ```
-
-## How to run locally
-
-Because this project uses `fetch` to load local files, you need to run it through a local web server. Simply opening `index.html` in your browser will not work due to CORS security restrictions.
-
-A simple way to start a local server is to use Python's built-in HTTP server.
-
-1.  Open your terminal in the project's root directory.
-2.  Run the following command:
-
-    ```bash
-    python3 -m http.server
-    ```
-    (If you are using Python 2, the command is `python -m SimpleHTTPServer`).
-
-3.  Open your web browser and navigate to `http://localhost:8000`.
-
-## Deployment
-
-This website is configured to be deployed on GitHub Pages.
-
-A crucial step for the deployment to work correctly is the presence of an empty file named `.nojekyll` in the root of the repository. This file tells GitHub Pages to not process the site with Jekyll, which is the default behavior. Without `.nojekyll`, GitHub Pages might not serve the Markdown files in the `md_posts` directory correctly, leading to 404 errors.
